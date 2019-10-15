@@ -16,14 +16,16 @@ const Search = () => {
     fetch("https://restcountries.eu/rest/v2/name/" + searchValue)
       .then(res => {
         if (res.ok) return res.json();
-        else throw new Error();
+        else {
+          setCountries([]);
+          throw new Error();
+        }
       })
       .then(data => {
         setCountries(data);
       })
       .catch(err => {
         console.error(err);
-        setCountries([]);
       });
   };
 
