@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Table from "./components/UI/Table";
-import Modal from "./components/UI/Modal";
+import Table from "../../components/UI/Table";
+import Modal from "../../components/UI/Modal/Modal";
+import CountryDetails from "../../components/UI/CountryDetails/CountryDetails";
+
+import "./CountryList.css";
 
 const CountryList = props => {
   //Initialize the state that we will need
@@ -29,24 +32,16 @@ const CountryList = props => {
   };
 
   return (
-    <>
-      <h1>{props.title}</h1>
-      {countries ? <Table countries={countries} clicked={handleClick} /> : null}
+    <section>
+      <h1 className="page-summary">{props.title}</h1>
+      {countries.length > 0 ? <Table countries={countries} clicked={handleClick} /> : null}
       {showModal ? (
         <Modal closeModal={() => setShowModal(false)}>
           <h3 style={{ textAlign: "center" }}>Country details</h3>
-          {selectedCountry ? (
-            <div>
-              <p>Country name: {selectedCountry.name}</p>
-              <p>Capital city: {selectedCountry.capital}</p>
-              <p>Alpha 2Code: {selectedCountry.alpha2Code}</p>
-              <p>Region: {selectedCountry.region}</p>
-              <p>Population: {selectedCountry.population}</p>
-            </div>
-          ) : null}
+          {selectedCountry ? <CountryDetails selectedCountry={selectedCountry} /> : null}
         </Modal>
       ) : null}
-    </>
+    </section>
   );
 };
 

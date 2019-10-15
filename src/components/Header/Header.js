@@ -1,27 +1,25 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const headerStyle = {
-  position: "fixed",
-  width: "100%",
-  background: "#e1e1e1",
-  top: 0,
-  left: 0,
-  height: "60px"
-};
-
-const navStyle = {
-  display: "flex",
-  justifyContent: "flex-end"
-};
+import "./Header.css";
 
 const Header = () => {
   return (
-    <header style={headerStyle}>
-      <nav style={navStyle}>
-        <NavLink to="/">All Countries</NavLink>
-        <NavLink to="/allEU">EU Countries</NavLink>
-        <NavLink to="/search">Search By Name</NavLink>
+    <header>
+      <nav>
+        <ul className="link-list">
+          <li className="link-item">
+            <NavLink to="/" exact>
+              All Countries
+            </NavLink>
+          </li>
+          <li className="link-item">
+            <NavLink to="/allEU">EU Countries</NavLink>
+          </li>
+          <li className="link-item">
+            <NavLink to="/search">Search By Name</NavLink>
+          </li>
+        </ul>
       </nav>
     </header>
   );

@@ -1,8 +1,10 @@
 import React from "react";
 import Header from "../Header/Header";
+
+import "./Layout.css";
 const Layout = props => {
   return (
-    <main style={{ marginTop: "60px" }}>
+    <main className="base-layout">
       <Header />
       {props.children}
     </main>

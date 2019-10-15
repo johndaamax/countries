@@ -45,34 +45,18 @@ function TablePaginationActions(props) {
 
   return (
     <div className={classes.root}>
-      <IconButton
-        onClick={handleFirstPageButtonClick}
-        disabled={page === 0}
-        aria-label="first page"
-      >
+      <IconButton onClick={handleFirstPageButtonClick} disabled={page === 0} aria-label="first page">
         {theme.direction === "rtl" ? <LastPageIcon /> : <FirstPageIcon />}
       </IconButton>
-      <IconButton
-        onClick={handleBackButtonClick}
-        disabled={page === 0}
-        aria-label="previous page"
-      >
-        {theme.direction === "rtl" ? (
-          <KeyboardArrowRight />
-        ) : (
-          <KeyboardArrowLeft />
-        )}
+      <IconButton onClick={handleBackButtonClick} disabled={page === 0} aria-label="previous page">
+        {theme.direction === "rtl" ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
       </IconButton>
       <IconButton
         onClick={handleNextButtonClick}
         disabled={page >= Math.ceil(count / rowsPerPage) - 1}
         aria-label="next page"
       >
-        {theme.direction === "rtl" ? (
-          <KeyboardArrowLeft />
-        ) : (
-          <KeyboardArrowRight />
-        )}
+        {theme.direction === "rtl" ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
       </IconButton>
       <IconButton
         onClick={handleLastPageButtonClick}
@@ -105,10 +89,12 @@ const useStyles2 = makeStyles(theme => ({
     fontWeight: 700
   },
   mainColumn: {
-    width: "50%"
+    width: "50%",
+    padding: "8px"
   },
   secondaryColumn: {
-    width: "25%"
+    width: "25%",
+    padding: "8px"
   },
   tableWrapper: {
     overflowX: "auto"
@@ -145,34 +131,24 @@ export default function CustomPaginationActionsTable(props) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {props.countries
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map(row => (
-                <TableRow
-                  onClick={() => props.clicked(row)}
-                  hover
-                  key={row.name}
-                >
-                  <TableCell
-                    className={classes.mainColumn}
-                    component="th"
-                    scope="row"
-                  >
-                    {row.name}
-                  </TableCell>
-                  <TableCell className={classes.secondaryColumn} align="right">
-                    {row.capital}
-                  </TableCell>
-                  <TableCell className={classes.secondaryColumn} align="right">
-                    {row.alpha2Code}
-                  </TableCell>
-                </TableRow>
-              ))}
+            {props.countries.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => (
+              <TableRow onClick={() => props.clicked(row)} hover key={row.name}>
+                <TableCell className={classes.mainColumn} component="th" scope="row">
+                  {row.name}
+                </TableCell>
+                <TableCell className={classes.secondaryColumn} align="right">
+                  {row.capital}
+                </TableCell>
+                <TableCell className={classes.secondaryColumn} align="right">
+                  {row.alpha2Code}
+                </TableCell>
+              </TableRow>
+            ))}
           </TableBody>
           <TableFooter>
             <TableRow>
               <TablePagination
-                rowsPerPageOptions={[10, 20]}
+                rowsPerPageOptions={[5, 10, 15]}
                 colSpan={3}
                 count={props.countries.length}
                 rowsPerPage={rowsPerPage}
