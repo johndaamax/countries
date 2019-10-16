@@ -1,13 +1,27 @@
 import React from "react";
 
+import "./CountryDetails.css";
+
+/* Helper component that contains the extra information that we need to display */
 const CountryDetails = props => {
   return (
     <div className="details">
-      <p>Country name: {props.selectedCountry.name}</p>
-      <p>Capital city: {props.selectedCountry.capital}</p>
-      <p>Alpha 2Code: {props.selectedCountry.alpha2Code}</p>
-      <p>Region: {props.selectedCountry.region}</p>
-      <p>Population: {props.selectedCountry.population}</p>
+      <h3 className="details-title">Country details</h3>
+      <p>
+        Country name: <span className="field-value"> {props.selectedCountry.name} </span>
+      </p>
+      <p>
+        Capital city: <span className="field-value">{props.selectedCountry.capital}</span>
+      </p>
+      <p>
+        Alpha 2Code: <span className="field-value">{props.selectedCountry.alpha2Code}</span>
+      </p>
+      <p>
+        Region: <span className="field-value">{props.selectedCountry.region}</span>
+      </p>
+      <p>
+        Population: <span className="field-value">{props.selectedCountry.population}</span>
+      </p>
     </div>
   );
 };

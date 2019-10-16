@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom";
 
 import "./Header.css";
 
+/* Header component that contains the list of the links of the different pages of the app
+ */
 const Header = () => {
   return (
     <header>

@@ -1,11 +1,11 @@
 form {
-  width: 400px;
+  width: 450px;
   padding: 20px;
   margin: 0 auto;
 }
 
 .search-name-input {
-  width: 280px;
+  width: 270px;
   font: inherit;
   border: none;
   border-bottom: 2px solid #ccc;
@@ -25,12 +25,13 @@ form {
   font: inherit;
   border: 1px solid #0048cf;
   background: #0048cf;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1.5rem;
   color: white;
   border-radius: 5px;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.26);
   cursor: pointer;
   text-decoration: none;
+  text-transform: uppercase;
 }
 
 .form-button:focus {

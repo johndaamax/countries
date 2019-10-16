@@ -15,6 +15,8 @@ import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import LastPageIcon from "@material-ui/icons/LastPage";
 
+//Material UI Table component with pagination included
+
 const useStyles1 = makeStyles(theme => ({
   root: {
     flexShrink: 0,
@@ -106,6 +108,7 @@ export default function CustomPaginationActionsTable(props) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
+  //on props change, we set page to 0 to go back to the first page
   useEffect(() => {
     setPage(0);
   }, [props.countries]);

@@ -2,7 +2,9 @@ import React from "react";
 
 import "./Modal.css";
 
-//Modal and Backdrop component used upon clicking a table row
+/* Modal and Backdrop component used upon clicking a table row
+   The modal is a popup window which displays extra information when clicking a table record
+*/
 const Modal = props => {
   return (
     <>

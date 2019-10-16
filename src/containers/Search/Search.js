@@ -5,6 +5,10 @@ import Modal from "../../components/UI/Modal/Modal";
 import CountryDetails from "../../components/UI/CountryDetails/CountryDetails";
 import "./Search.css";
 
+/* The second main component that fetches country data from the restcountries API based on the 
+value entered by the user on the input field. Incorrect calls trigger a GET error and display no data
+*/
+
 const Search = () => {
   const [searchValue, setSearchValue] = useState("");
   const [countries, setCountries] = useState([]);
@@ -51,7 +55,6 @@ const Search = () => {
       <Table countries={countries} clicked={handleClick} />
       {showModal ? (
         <Modal closeModal={() => setShowModal(false)}>
-          <h3 style={{ textAlign: "center" }}>Country details</h3>
           {selectedCountry ? <CountryDetails selectedCountry={selectedCountry} /> : null}
         </Modal>
       ) : null}
