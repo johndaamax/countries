@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from "react";
+import styled from 'styled-components';
+
 import Table from "../../components/UI/Table";
 import Modal from "../../components/UI/Modal/Modal";
 import CountryDetails from "../../components/UI/CountryDetails/CountryDetails";
 
-import "./CountryList.css";
+const SummaryTitle = styled.h1`
+  padding-top: 20px;
+  text-align: center;
+  text-transform: uppercase;
+`;
 
 /* Component that fetches and displays a list of countries from the 
 restcountries API based on the apiSuffix prop that we pass to it. The 
@@ -39,13 +45,13 @@ const CountryList = props => {
 
   return (
     <section>
-      <h1 className="page-summary">{props.title}</h1>
-      {countries.length > 0 ? <Table countries={countries} clicked={handleClick} /> : null}
-      {showModal ? (
+      <SummaryTitle>{props.title}</SummaryTitle>
+      {countries.length > 0 && <Table countries={countries} clicked={handleClick} />}
+      {showModal &&
         <Modal closeModal={() => setShowModal(false)}>
-          {selectedCountry ? <CountryDetails selectedCountry={selectedCountry} /> : null}
+          {selectedCountry && <CountryDetails selectedCountry={selectedCountry} />}
         </Modal>
-      ) : null}
+      }
     </section>
   );
 };

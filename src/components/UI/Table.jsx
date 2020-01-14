@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { memo, useEffect } from "react";
 import PropTypes from "prop-types";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -103,7 +103,7 @@ const useStyles2 = makeStyles(theme => ({
   }
 }));
 
-export default function CustomPaginationActionsTable(props) {
+const CustomTable = memo(({ countries, clicked }) => {
   const classes = useStyles2();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -111,7 +111,7 @@ export default function CustomPaginationActionsTable(props) {
   //on props change, we set page to 0 to go back to the first page
   useEffect(() => {
     setPage(0);
-  }, [props.countries]);
+  }, [countries]);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -138,8 +138,8 @@ export default function CustomPaginationActionsTable(props) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {props.countries.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => (
-              <TableRow onClick={() => props.clicked(row)} hover key={row.name}>
+            {countries.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => (
+              <TableRow onClick={() => clicked(row)} hover key={row.name}>
                 <TableCell className={classes.mainColumn} component="th" scope="row">
                   {row.name}
                 </TableCell>
@@ -157,7 +157,7 @@ export default function CustomPaginationActionsTable(props) {
               <TablePagination
                 rowsPerPageOptions={[5, 10, 15]}
                 colSpan={3}
-                count={props.countries.length}
+                count={countries.length}
                 rowsPerPage={rowsPerPage}
                 page={page}
                 SelectProps={{
@@ -174,4 +174,6 @@ export default function CustomPaginationActionsTable(props) {
       </div>
     </Paper>
   );
-}
+});
+
+export default CustomTable
