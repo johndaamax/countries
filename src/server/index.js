@@ -1,8 +1,19 @@
+require('dotenv').config()
 const express = require('express')
-
 const app = express();
+const connectDB = require('./db')
 
-app.get('/', (req, res) => res.send('Root route.'));
+const authRouter = require('./routes/auth')
+const signupRouter = require('./routes/register')
+
+
+// connect to Mongo from home to verify what goes wrong here
+// connectDB();
+
+app.use(express.json({extended: false}));
+
+app.use('/login', authRouter);
+app.use('/register', signupRouter);
 
 const PORT = process.env.PORT || 4000;
 

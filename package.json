@@ -7,6 +7,7 @@
     "@material-ui/icons": "^4.5.1",
     "bcryptjs": "^2.4.3",
     "config": "^3.2.4",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.8.7",
@@ -17,8 +18,8 @@
     "styled-components": "^5.0.0"
   },
   "scripts": {
-    "start": "node server",
-    "server": "nodemon server",
+    "start": "node src/server/index",
+    "server": "nodemon src/server/index",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
