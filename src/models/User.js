@@ -1,10 +1,7 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
+// currently only email and password will describe a user
 const schema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true
-    },
     email: {
         type: String,
         required: true,

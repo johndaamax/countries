@@ -6,9 +6,8 @@ const connectDB = require('./db')
 const authRouter = require('./routes/auth')
 const signupRouter = require('./routes/register')
 
-
-// connect to Mongo from home to verify what goes wrong here
-// connectDB();
+//connect Mongo
+connectDB();
 
 app.use(express.json({extended: false}));
 
