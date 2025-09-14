@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import styled from 'styled-components';
 
 const ModalDiv = styled.div`
@@ -25,7 +25,6 @@ const BackdropDiv = styled.div`
   z-index: 10;
 `;
 
-
 /* Modal and Backdrop component used upon clicking a table row
    The modal is a popup window which displays extra information when clicking a table record
 */
@@ -33,9 +32,7 @@ const Modal = ({ children, closeModal }) => {
   return (
     <>
       <BackdropDiv onClick={closeModal} />
-      <ModalDiv onClick={closeModal}>
-        {children}
-      </ModalDiv>
+      <ModalDiv onClick={closeModal}>{children}</ModalDiv>
     </>
   );
 };

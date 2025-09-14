@@ -1,6 +1,8 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import { useColorScheme } from '@mui/material/styles';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
 
 const MainHeader = styled.header`
   position: fixed;
@@ -47,7 +49,17 @@ const Link = styled(NavLink)`
   &.active {
     color: #d13456;
   }
-`
+`;
+
+function ColorModeToggle() {
+  const { setMode, mode } = useColorScheme();
+
+  return (
+    <button onClick={() => setMode(mode === 'dark' ? 'light' : 'dark')}>
+      {mode === 'dark' ? <LightModeIcon /> : <DarkModeIcon />}
+    </button>
+  );
+}
 
 /* Header component that contains the list of the links of the different pages of the app
  */
@@ -57,18 +69,14 @@ const Header = () => {
       <nav>
         <LinkList>
           <LinkItem>
-            <Link to="/" exact>
-              All Countries
-            </Link>
+            <Link to="/">All Countries</Link>
           </LinkItem>
           <LinkItem>
             <Link to="/allEU">EU Countries</Link>
           </LinkItem>
-          <LinkItem>
-            <Link to="/search">Search By Name</Link>
-          </LinkItem>
         </LinkList>
       </nav>
+      <ColorModeToggle />
     </MainHeader>
   );
 };
